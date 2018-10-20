@@ -183,6 +183,7 @@ video_size = (1920, 1080)
 
 # Name of the generated HTML files
 # output_filename = 'index.html'
+output_filename = 'index.json'
 
 # Add output filename (see above) to the URLs
 # index_in_url = False
