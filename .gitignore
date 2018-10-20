@@ -1,0 +1,15 @@
+photos/**/*.gif
+photos/**/*.JPG
+photos/**/*.jpg
+photos/**/*.jpeg
+photos/**/*.MP4
+photos/**/*.mp4
+photos/**/*.png
+
+_build
+archive
+civetweb
+theme-kaliatech-galleria
+venv
+
+

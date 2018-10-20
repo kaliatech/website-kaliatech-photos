@@ -1,0 +1,1 @@
+Thumbnail: 20070623/IMG_1074.JPG
