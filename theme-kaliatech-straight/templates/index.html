@@ -10,6 +10,7 @@
           "filename": "{{media.filename}}",
           "thumbnail": "{{media.thumbnail}}",
           "title": "{{media.title}}",
+		  "descr": {{ media.description | e | tojson }},
           "exif": {% if media.exif %} {
             "iso": {{ (media.exif.iso or '') | tojson }},
             "exposure": {{ (media.exif.exposure or '') | tojson }},
