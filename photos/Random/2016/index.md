@@ -1,2 +1,2 @@
 Title: Photos - 2016
-Thumbnail: P1080216.JPG
+Thumbnail: P1080253.JPG
