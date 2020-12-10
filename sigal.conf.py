@@ -15,18 +15,18 @@
 
 # Source directory. Can be set here or as the first argument of the `sigal
 # build` command
-source = './photos'
+source = '/website-kaliatech-gallery/photos'
 
 # Destination directory. Can be set here or as the second argument of the
 # `sigal build` command (default: '_build')
-# destination = '_build'
+destination = '/website-kaliatech-gallery/photos-build'
 
 # Theme :
 # - colorbox (default), galleria, photoswipe, or the path to a custom theme
 # directory
 #theme = 'galleria'
 #theme = 'theme-kaliatech-galleria'
-theme = 'theme-kaliatech-straight'
+theme = '/website-kaliatech-gallery/theme-kaliatech-straight'
 
 # Author. Used in the footer of the pages and in the author meta tag.
 # author = ''
@@ -43,6 +43,9 @@ theme = 'theme-kaliatech-straight'
 
 # Size of resized image (default: (640, 480))
 img_size = (1920, 1080)
+
+# Output format of images (default: None, i.e. use input format)
+# img_format = "JPEG"
 
 # Show a map of the images where possible?
 # This option only has an effect on the galleria theme for the while.
@@ -99,14 +102,14 @@ datetime_format = '%Y-%m-%dT%H:%M:%SZ'
 # Thumbnail size (default: (200, 150))
 # For the galleria theme, use 280 px for the width
 # For the colorbox and photoswipe theme, use 200 px for the width
-thumb_size = (280, 210)
+thumb_size = (640, 360)
 
 # Crop the image to fill the box
 # thumb_fit = True
 
 # When using thumb_fit, specifies what we should crop
 # for usage see
-# http://pillow.readthedocs.io/en/3.1.x/reference/ImageOps.html#PIL.ImageOps.fit
+# http://pillow.readthedocs.io/en/stable/reference/ImageOps.html#PIL.ImageOps.fit
 # thumb_fit_centering = (0.5, 0.5)
 
 # Delay in seconds to avoid black thumbnails in videos with fade-in
@@ -203,13 +206,6 @@ output_filename = 'index.json'
 # Example : {'tracker_url': 'http://stats.domain.com', 'site_id' : 2}
 # piwik = {'tracker_url': '', 'site_id' : 0}
 
-# Set zip_gallery to either False or a file name. The file name can be formatted
-# python style with an 'album' variable, for example '{album.name}.zip'. The final archive will
-# contain all resized or original files (depending on `zip_media_format`).
-# zip_gallery = False   # False or 'archive.zip'
-# zip_media_format = 'resized'  # 'resized' or 'orig'
-# zip_skip_if_exists = False # Skip archive generation if archive is already present. Warning: new photos in an album won't be added to archive
-
 # Specify a different locale. If set to '', the default locale is used.
 # locale = ''
 
@@ -243,12 +239,19 @@ output_filename = 'index.json'
 # Another option is to import the plugin and put the module in the list, but
 # this will break with the multiprocessing feature (the settings dict obtained
 # from this file must be serializable).
-# plugins = ['sigal.plugins.adjust', 'sigal.plugins.copyright',
-#            'sigal.plugins.upload_s3', 'sigal.plugins.media_page',
-#            'sigal.plugins.nomedia', 'sigal.plugins.extended_caching']
-
-# Add a copyright text on the image (default: '')
-# copyright = "© An example copyright message"
+# plugins = [
+#     'sigal.plugins.adjust',
+#     'sigal.plugins.compress_assets',
+#     'sigal.plugins.copyright',
+#     'sigal.plugins.encrypt',
+#     'sigal.plugins.extended_caching',
+#     'sigal.plugins.feeds',
+#     'sigal.plugins.media_page',
+#     'sigal.plugins.nomedia',
+#     'sigal.plugins.upload_s3',
+#     'sigal.plugins.watermark',
+#     'sigal.plugins.zip_gallery',
+# ]
 
 # Adjust the image after resizing it. A default value of 1.0 leaves the images
 # untouched.
@@ -257,6 +260,20 @@ output_filename = 'index.json'
 #                   'contrast': 1.0,
 #                   'sharpness': 1.0}
 
+# Settings for compressing static assets
+# compress_assets_options = {
+#    'method': 'gzip' # Or 'zopfli' or 'brotli'
+# }
+
+# Add a copyright text on the image (default: '')
+# copyright = "© An example copyright message"
+
+# Settings for encryption plugin
+# encrypt_options = {
+#    'password': 'password',
+#    'ask_password': False
+# }
+
 # Settings for upload to s3 plugin
 # upload_s3_options = {
 # 	'bucket': 'my-bucket',
@@ -264,7 +281,11 @@ output_filename = 'index.json'
 # 	'overwrite': False
 # }
 
-# Settings for compressing static assets
-# compress_assets_options = {
-#    'method': 'gzip' # Or 'zopfli' or 'brotli'
-# }
+# Set zip_gallery to either False or a file name. The file name can
+# be formatted python style with an 'album' variable, for example
+# '{album.name}.zip'. The final archive will contain all resized or
+# original files (depending on `zip_media_format`).
+# zip_gallery = False   # False or 'archive.zip'
+# zip_media_format = 'resized'  # 'resized' or 'orig'
+# zip_skip_if_exists = False # Skip archive generation if archive is
+# already present. Warning: new photos in an album won't be added to archive

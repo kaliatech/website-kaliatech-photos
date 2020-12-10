@@ -1,0 +1,43 @@
+{
+  "medias": [
+    {% for media in album.medias %}
+        {
+          {% if media.type == "image" %}
+          "type": "image",
+          {% else %}
+          "type": "video",
+          {% endif %}
+          "filename": "{{media.filename}}",
+          "thumbnail": "{{media.thumbnail}}",
+          "title": "{{media.title}}",
+		  "descr": {{ media.description | e | tojson }},
+          "exif": {% if media.exif %} {
+            "iso": {{ (media.exif.iso or '') | tojson }},
+            "exposure": {{ (media.exif.exposure or '') | tojson }},
+            "fstop": {{ (media.exif.fstop or '') | tojson }},
+            "focal": {{ (media.exif.focal or '') | tojson }},
+            "make": {{ (media.exif.Make or '') | tojson }},
+            "model": {{ (media.exif.Model or '') | tojson }},
+            "datetime": {{ (media.exif.datetime or '') | tojson }}
+          } {% else %} null,
+          "descr":"{{ media.descr or null }}"
+          {% endif %}
+        }{%+ if not loop.last %},{% endif %}
+    {% endfor %}
+],
+"album": {
+  "name": "{{album.name}}",
+  "descr": {{ album.description | e | tojson }},
+  "thumbnail": "{{ album.thumbnail }}"
+},
+"subalbums": [
+    {% for alb in album.albums %}
+    {
+      "name": "{{alb.name}}",
+      "title": "{{alb.title}}",
+      "url": "{{alb.url}}",
+      "thumbnail": "{{alb.thumbnail}}"
+    }{%+ if not loop.last %},{% endif %}
+    {% endfor %}
+]
+}
