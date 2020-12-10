@@ -15,18 +15,18 @@
 
 # Source directory. Can be set here or as the first argument of the `sigal
 # build` command
-source = '/website-kaliatech-gallery/photos'
+source = '/website-kaliatech-photos/photos'
 
 # Destination directory. Can be set here or as the second argument of the
 # `sigal build` command (default: '_build')
-destination = '/website-kaliatech-gallery/photos-build'
+destination = '/website-kaliatech-photos/_build'
 
 # Theme :
 # - colorbox (default), galleria, photoswipe, or the path to a custom theme
 # directory
 #theme = 'galleria'
 #theme = 'theme-kaliatech-galleria'
-theme = '/website-kaliatech-gallery/theme-kaliatech-straight'
+theme = '/website-kaliatech-photos/theme-kaliatech-straight'
 
 # Author. Used in the footer of the pages and in the author meta tag.
 # author = ''
