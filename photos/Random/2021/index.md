@@ -1,2 +1,2 @@
 Title: Photos - 2021
-Thumbnail: PXL_20210129_223540210.jpg
+Thumbnail: PXL_20210616_100448979.jpg
